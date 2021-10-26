@@ -10,7 +10,7 @@ def get_payload(user):
                     "last_name": user.last_name,
                     "username": user.username,
                     "email": user.email,
-                    "phone_number": user.phone_number"}
+                    "phone_number": user.phone_number}
     return user_payload
 
 
@@ -55,12 +55,11 @@ async def update_user(user: UserDto):
     if user_exists is None:
         raise HTTPException(status=400, detail="NO_SUCH_USER")
 
-    user_exists = User(first_name = user.first_name,
+    user_exists =  User(first_name = user.first_name,
                         last_name = user.last_name,
                         username = user.username,
                         email = user.email,
-                        phone_number= user.phone_number,
-                        username= user.username).save()
+                        phone_number= user.phone_number).save()
     
     user_payload = get_payload(user)
 
