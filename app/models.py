@@ -27,7 +27,7 @@ class User(StructuredNode):
 
     #Relationships
     friend         = RelationshipTo('User', 'FRIENDS_WITH', model=Friendship)
-    written        = RelationshipTo('Post', 'HAS', model=Post_Activity)
+    posted         = RelationshipTo('Post', 'HAS', model=Post_Activity)
     liked          = RelationshipTo('Post', 'LIKED', model=Post_Activity)
     shared         = RelationshipTo('Post', 'SHARED', model=Post_Activity)
     commented      = RelationshipTo('Post', 'COMMENTED', model=Post_Activity)
