@@ -1,10 +1,6 @@
-from typing import Optional
 from neomodel import StructuredRel, StructuredNode, RelationshipTo, RelationshipFrom
 from neomodel import (StringProperty, BooleanProperty, FloatProperty, IntegerProperty, 
     ArrayProperty, JSONProperty, DateTimeProperty, UniqueIdProperty)
-
-import uuid
-
 from neomodel.properties import EmailProperty
 
 #Relations
@@ -43,7 +39,6 @@ class User(StructuredNode):
         props['id'] = props['node_id']
         del props['node_id']
         return props
-
 
 class Post(StructuredNode):
     #Attributes
