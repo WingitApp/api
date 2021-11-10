@@ -16,14 +16,15 @@ class Membership(StructuredRel):
 #Models
 class User(StructuredNode):
     #Properties
-    uid            = StringProperty(unique_index=True)
-    username       = StringProperty(unique_index=True)
-    first_name     = StringProperty()
-    last_name      = StringProperty()
-    phone_number   = StringProperty()  
-    email          = EmailProperty()
-    deactivated    = BooleanProperty(default=False)
-    disabled       = BooleanProperty(default=False)
+    uid              = StringProperty(unique_index=True)
+    username         = StringProperty(unique_index=True)
+    hashed_password  = StringProperty()
+    first_name       = StringProperty()
+    last_name        = StringProperty()
+    phone_number     = StringProperty()  
+    email            = EmailProperty()
+    deactivated      = BooleanProperty(default=False)
+    disabled         = BooleanProperty(default=False)
 
     #Relationships
     friend         = RelationshipTo('User', 'FRIENDS_WITH', model=Friendship)
