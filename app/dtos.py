@@ -1,12 +1,14 @@
 from pydantic import BaseModel
 
 class UserDto(BaseModel):
+    uid: str
+    username: str
     first_name: str
     last_name: str
-    username: str
     phone_number: str
     email: str
-    username: str
+    deactivated: bool
+    disabled: bool
 
 class PostDto(BaseModel):
     author: str
