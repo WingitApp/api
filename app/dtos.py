@@ -1,14 +1,15 @@
+from typing import Optional
 from pydantic import BaseModel
 
 class UserDto(BaseModel):
-    uid: str
-    username: str
-    first_name: str
-    last_name: str
-    phone_number: str
-    email: str
-    deactivated: bool
-    disabled: bool
+    uid: Optional[str] = None
+    username: Optional[str] = None
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    phone_number: Optional[str] = None
+    email: Optional[str] = None
+    deactivated: Optional[bool] = None
+    disabled: Optional[bool] = None
 
 class PostDto(BaseModel):
     author: str
