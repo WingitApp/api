@@ -40,6 +40,9 @@ app = FastAPI()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
+for router in routers:
+    app.include_router(router)
+
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
@@ -69,19 +72,6 @@ async def index():
 @app.get("/users/")
 async def read_users(token: str = Depends(oauth2_scheme)):
     return {"token": token}
-
-for router in routers:
-    app.include_router(router)
-
-def fake_hash_password(password: str):
-    return "fakehashed" + password
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-def fake_decode_token(token):
-    return UserDto(
-        username=token + "fakedecoded", email="john@example.com", full_name="John Doe"
-    )
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()
