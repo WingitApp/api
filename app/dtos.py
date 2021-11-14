@@ -1,12 +1,23 @@
+from typing import Optional
 from pydantic import BaseModel
 
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
+
 class UserDto(BaseModel):
-    first_name: str
-    last_name: str
-    username: str
-    phone_number: str
-    email: str
-    username: str
+    uid: Optional[str] = None
+    username: Optional[str] = None
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    phone_number: Optional[str] = None
+    email: Optional[str] = None
+    deactivated: Optional[bool] = None
+    disabled: Optional[bool] = None
 
 class PostDto(BaseModel):
     author: str

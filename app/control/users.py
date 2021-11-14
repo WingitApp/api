@@ -14,7 +14,7 @@ def get_payload(user):
     return user_payload
 
 
-@router.get("/list")
+@router.get("/list", tags=["users"])
 async def list_users():
     #users =[]
     #for user in User.nodes.all():
@@ -24,7 +24,7 @@ async def list_users():
     return [user.to_json() for user in User.nodes.all()]
 
 
-@router.get("/{username}")
+@router.get("/{username}", tags=["users"])
 async def get_user(username: str):
     user = User.nodes.get_or_none(username = username)
     if user is None:
@@ -32,7 +32,7 @@ async def get_user(username: str):
     return user
 
 
-@router.post("/create")
+@router.post("/create", tags=["users"])
 async def create_user(user: UserDto):
     user_exists = User.nodes.get_or_none(username = user.username)
     if user_exists:
@@ -48,7 +48,7 @@ async def create_user(user: UserDto):
     return {"user": user_payload}
 
 
-@router.put("/update/{username}")
+@router.put("/update/{username}", tags=["users"])
 async def update_user(user: UserDto):
     user_exists = User.nodes.get_or_none(username= user.username)
     
@@ -65,7 +65,7 @@ async def update_user(user: UserDto):
 
     return {"user": user_payload}
 
-@router.put("/{username}/add_location")
+@router.put("/{username}/add_location", tags=["users"])
 async def add_location(username: str, location: LocationDto):
     user_exists = User.nodes.get_or_none(username=username)
     if user_exists is None:
@@ -82,7 +82,7 @@ async def add_location(username: str, location: LocationDto):
 
     return {}
 
-@router.put("/{username}/add_friend")
+@router.put("/{username}/add_friend", tags=["users"])
 async def add_friend(username: str, friend: str):
     if username == friend:
         raise HTTPException(status=400, detail="SAME_USERNAME")
@@ -98,7 +98,7 @@ async def add_friend(username: str, friend: str):
     return {}
 
 
-@router.delete("/delete/{username}")
+@router.delete("/delete/{username}", tags=["users"])
 async def delete_user(username: str):
     user_exists = User.nodes.get_or_none(username= username)
     if user_exists is None:

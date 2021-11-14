@@ -1,9 +1,6 @@
 from neomodel import StructuredRel, StructuredNode, RelationshipTo, RelationshipFrom
 from neomodel import (StringProperty, BooleanProperty, FloatProperty, IntegerProperty, 
     ArrayProperty, JSONProperty, DateTimeProperty, UniqueIdProperty)
-
-import uuid
-
 from neomodel.properties import EmailProperty
 
 #Relations
@@ -18,12 +15,16 @@ class Membership(StructuredRel):
 
 #Models
 class User(StructuredNode):
-    #Attributes
-    first_name     = StringProperty(required=True)
-    last_name      = StringProperty(required=True)
-    phone_number   = StringProperty(required=True)  
-    email          = EmailProperty(default="")
-    username       = StringProperty(unique_index=True, required=True)
+    #Properties
+    uid              = StringProperty(unique_index=True)
+    username         = StringProperty(unique_index=True)
+    hashed_password  = StringProperty()
+    first_name       = StringProperty()
+    last_name        = StringProperty()
+    phone_number     = StringProperty()  
+    email            = EmailProperty()
+    deactivated      = BooleanProperty(default=False)
+    disabled         = BooleanProperty(default=False)
 
     #Relationships
     friend         = RelationshipTo('User', 'FRIENDS_WITH', model=Friendship)
@@ -39,7 +40,6 @@ class User(StructuredNode):
         props['id'] = props['node_id']
         del props['node_id']
         return props
-
 
 class Post(StructuredNode):
     #Attributes
