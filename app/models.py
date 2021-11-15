@@ -37,8 +37,6 @@ class User(StructuredNode):
 
     def to_json(self):
         props = self.__properties__
-        props['id'] = props['node_id']
-        del props['node_id']
         return props
 
 class Post(StructuredNode):

@@ -16,11 +16,6 @@ def get_payload(user):
 
 @router.get("/list", tags=["users"])
 async def list_users():
-    #users =[]
-    #for user in User.nodes.all():
-    #    user_payload = get_payload(user)
-    #    users.append(user_payload)
-    #return users
     return [user.to_json() for user in User.nodes.all()]
 
 
