@@ -8,7 +8,6 @@ import uvicorn
 
 print("Starting database...")
 config.DATABASE_URL = os.environ["NEO4J_BOLT_URL"]
-print(config.DATABASE_URL)
 
 if __name__ == '__main__':
     uvicorn.run('main:app', reload=True)
