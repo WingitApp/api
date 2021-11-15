@@ -23,6 +23,7 @@ class User(StructuredNode):
     last_name        = StringProperty()
     phone_number     = StringProperty()  
     email            = EmailProperty()
+    avatar_url       = StringProperty()
     deactivated      = BooleanProperty(default=False)
     disabled         = BooleanProperty(default=False)
 
