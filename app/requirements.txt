@@ -1,4 +1,8 @@
+cryptography
 fastapi
 gunicorn
 neomodel
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
 uvicorn
